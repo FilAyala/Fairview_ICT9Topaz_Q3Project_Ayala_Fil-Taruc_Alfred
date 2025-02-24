@@ -1,4 +1,4 @@
-w<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,7 +10,7 @@ w<!DOCTYPE html>
 <style>
 
 body{
-	padding-top: 170px;
+	padding-top: 150px;
 	padding-left: 50px;
 	padding-right: 50px;
 	font-size: 25px;
@@ -40,7 +40,7 @@ li a{
 	text-align: center;
 	justify-content: space-between;
 	display: flex;
-	font-size: 35px;
+	font-size: 15px;
 	padding: 30px 1px;
 }
 
@@ -55,28 +55,27 @@ background-color: darkred;
 </style>
 <h1 style="background-color: gray;">Fare guide for MRT Line 3</h1>
 <br>
-<button type="Button" class="float-end btn btn-primary" id="price" style="height: 350px; width: 350px; border-radius: 5px;" onclick="document.getElementById('price').innerHTML=answer;">Ticket Price:</button>
+<button type="Button" class="float-end btn btn-primary" id="price" style="height: 350px; width: 350px; border-radius: 5px;" onclick="document.getElementById('price').innerHTML = answer;">Ticket Price:</button>
 
 <img class="float-start" style="height: 350px; width: 350px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaZluSWt8q9IdVUEieTtSy3nnj_c5hplGblw&s">
-
 <div class="col-md-4 mx-auto d-block" id="ticketform"><form>
 		<h1>MRT ticket</h1>
 			<label>Choose your starting station</label><br><br>
 			<select class="form-select" id="starting">
 				<option value="">Choose</option>
-				<option value="1"> North Avenue</option>
-				<option value="1"> Quezon Avenue</option>
-				<option value="1"> GMA Kamuning</option>
-				<option value="1"> Araneta Center - Cubao</option>
-				<option value="1"> Santolan-Anapolis</option>		
-				<option value="1"> Ortigas</option>
-				<option value="1"> Shaw Boulevard</option>
-				<option value="1"> Boni Avenue</option>
-				<option value="1"> Guadalupe</option>
-				<option value="1"> Buendia</option>
-				<option value="1"> Ayala</option>
-				<option value="1"> Magallanes</option>
-				<option value="1"> Taft Avenue</option>
+				<option value="0"> North Avenue</option>
+				<option value="0"> Quezon Avenue</option>
+				<option value="0"> GMA Kamuning</option>
+				<option value="0"> Araneta Center - Cubao</option>
+				<option value="0"> Santolan-Anapolis</option>
+				<option value="0"> Ortigas</option>
+				<option value="0"> Shaw Boulevard</option>
+				<option value="0"> Boni Avenue</option>
+				<option value="0"> Guadalupe</option>
+				<option value="0"> Buendia</option>
+				<option value="0"> Ayala</option>
+				<option value="0"> Magallanes</option>
+				<option value="0"> Taft Avenue</option>
 
 		</select>
 	</form>
@@ -85,19 +84,19 @@ background-color: darkred;
 			<label>Choose your destination</label><br><br>
 			<select class="form-select" id="destination">
 				<option value="">Choose</option>
-				<option value="1"> North Avenue</option>
-				<option value="1"> Quezon Avenue</option>
-				<option value="1"> GMA Kamuning</option>
-				<option value="1"> Araneta Center - Cubao</option>
-				<option value="1"> Santolan-Anapolis</option>		
-				<option value="1"> Ortigas</option>
-				<option value="1"> Shaw Boulevard</option>
-				<option value="1"> Boni Avenue</option>
-				<option value="1"> Guadalupe</option>
-				<option value="1"> Buendia</option>
-				<option value="1"> Ayala</option>
-				<option value="1"> Magallanes</option>
-				<option value="1"> Taft Avenue</option>
+				<option value="0"> North Avenue</option>
+				<option value="0"> Quezon Avenue</option>
+				<option value="0"> GMA Kamuning</option>
+				<option value="3"> Araneta Center - Cubao</option>
+				<option value="3"> Santolan-Anapolis</option>		
+				<option value="7"> Ortigas</option>
+				<option value="7"> Shaw Boulevard</option>
+				<option value="7"> Boni Avenue</option>
+				<option value="11"> Guadalupe</option>
+				<option value="11"> Buendia</option>
+				<option value="11"> Ayala</option>
+				<option value="15"> Magallanes</option>
+				<option value="15"> Taft Avenue</option>
 		</select>
 <br>
 </details>
@@ -107,7 +106,7 @@ background-color: darkred;
 		<summary>Discounts</summary>
 		<form>
 			<label>Select a Discount(if applicable)</label><br><br>
-			<select class="form-select" id="destination">
+			<select class="form-select" id="discount">
 				<option value="">Choose</option>
 				<option value="0.2"> PWD(20%)</option>
 				<option value="0.2">Student(20%)</option>
@@ -120,10 +119,12 @@ background-color: darkred;
 
 <script>
 function showValue(){
+var base = 13;
 var $startingMe = document.getElementById("starting").value;
 var _destinationMe = document.getElementById("destination").value;
-var disc = Number($startingMe) * Number(_destinationMe);
-var answer = Number($startingMe) - Number(disc)
+var price2 = Number($startingMe) + Number(_destinationMe) + Number(base);
+var disc = Number(price2) * document.getElementById("discount").value;
+var answer = Number(price2) - Number(disc);
 document.getElementById("price").innerHTML = answer;
 }
 </script>
@@ -132,7 +133,7 @@ document.getElementById("price").innerHTML = answer;
 <div class="navdiv container-fluid collapse navbar-collapse">
 		<ul class="navbar-nav me-auto navbar-nav me-auto">
                	<li class="logo">
-               	<img style="width:75px;" src="https://www.dotrmrt3.gov.ph/dotr-seal.png">
+               	<img style="width:80px;" src="https://www.dotrmrt3.gov.ph/dotr-seal.png">
                	</li>
                	<li class="index.html">
 				<a class="nav-link" href="index.html">Home</a>
@@ -145,10 +146,9 @@ document.getElementById("price").innerHTML = answer;
 			</li>
         </ul>
         	 <form class="d-flex">
-           	 <input class="form-control" type="text" style="background-color: lightgray; width: 350px; height: 120px;" placeholder="search...">
-          	 <button class="btn btn-danger" type="button" style="height: 120px;">Search</button>
+           	 <input class="form-control" type="text" style="background-color: lightgray; width: 350px; height: 80px;" placeholder="search...">
+          	 <button class="btn btn-danger" type="button" style="height: 80px;">Search</button>
         	</form>
 </div>
-
 </body>
 </html>
