@@ -2,14 +2,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<title>Train Schedule</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metro Rail Transit Line 3</title>
 </head>
 <body>
 <style>
+
 body{
-padding-top: 170px;
+padding-top: 150px;
 padding-left: 50px;
 padding-right: 50px;
 font-size: 25px;
@@ -39,7 +40,7 @@ color: blue;
 text-align: center;
 justify-content: space-between;
 display: flex;
-font-size: 25px;
+font-size: 15px;
 padding: 30px 1px;
 }
 
@@ -47,37 +48,107 @@ a:hover {
 background-color: darkred;
 }
 
-table, th, tr, td{
-border: 3px solid black;
+#ticketform{
+background-color: white;
+border-radius: 20px;
+border-color: #00834F;
+border-style: solid;
+border-width: medium;
+width: 475px;
+height: 525px;
+text-indent: 5px;
+}
+
+#fil{
+    width: 425px;
+    margin-left: 20px;
+}
+
+#alfred{
+    width: 425px;
+    margin-left: 20px;
 }
 
 </style>
+<h1 style="background-color: #354B9C; color: #FFCE2A; text-indent: 15px; border-radius: 20px; border-style: solid; border-color: #00834F; border-width: medium;">Fare Guide for MRT | Metro Rail Transit Rail 3</h1>
+<br>
+<button type="Button" class="float-end btn btn-primary" id="price" style="height: 475px; width: 430px; border-radius: 20px; border-style: solid; border-color: #FFCE2A; border-width: medium; margin-top: 25px;" onclick="document.getElementById('price').innerHTML = answer;">Ticket Price:</button>
 
-<h1 style="background-color: #324A9D; color: #FFCF26; border-radius: 15px; text-indent: 15px;"> Transit Schedule for MRT | Metro Rail Transit Line 3</h1><br>
+<img class="float-start" style="height: 475px; width: 430px; border-radius: 20px; border-style: solid; border-color: #354B9C; border-width: medium; margin-top: 25px; " src="https://www.sumitomocorp.com/mideast-africa/-/media/Images/hq/news/topics/2023/20230531/04-2_en.png?h=515&iar=0&w=915">
+<div class="col-md-4 mx-auto d-block" id="ticketform"><form>
 
-<table class="table table-responsive table-dark">
-<th><h1>Day</h1></th>
-<th><h1>Operating Hours(North ave.)</h1></th>
-<th><h1>Operating Hours(Taft ave.)</h1></th>
-<tr class="table-primary">
-<td class="text-center"><h4>Weekdays</h4><img class="mx-auto d-block img-fluid thumbnail"></td>
-<td><center><p>4:36 AM-9:30 PM</p></center></td>
-<td><center><p>5:18 AM-10:11 PM</p></center>
-</td></ul>
-</tr>
-<tr class="table-primary">
-<td class="text-center"><h4>Saturday</h4><img class="mx-auto d-block img-fluid thumbnail"></td>
-<td><center><p>4:37 AM-9:30 PM</p></center></td>
-<td><center><p>5:18 AM-10:08 PM</p></center>
-</td></ul>
-</tr>
-<tr class="table-primary">
-<td class="text-center"><h4>Sunday or Holidays</h4><img class="mx-auto d-block img-fluid thumbnail"></td>
-<td><center><p>4:38 AM-9:30 PM</p></center></td>
-<td><center><p>5:19 AM-10:09 PM</p></center>
-</td></ul>
-</tr>
 
+<label>Choose Your Starting Station</label><br><br>
+<div id="fil">
+<center>
+    <select class="form-select" id="starting">
+        <option value="">Choose</option>
+        <option value="13"> North Avenue</option>
+        <option value="13"> Quezon Avenue</option>
+        <option value="13"> GMA Kamuning</option>
+        <option value="13"> Araneta Center - Cubao</option>
+        <option value="13"> Santolan-Anapolis</option>
+        <option value="13"> Ortigas</option>
+        <option value="13"> Shaw Boulevard</option>
+        <option value="13"> Boni Avenue</option>
+        <option value="13"> Guadalupe</option>
+        <option value="13"> Buendia</option>
+        <option value="13"> Ayala</option>
+        <option value="13"> Magallanes</option>
+        <option value="13"> Taft Avenue</option>
+<center>
+
+
+</select>
+</div>
+<br>
+
+<label>Choose Your Destination/Last Station</label><br><br>
+<div id="alfred">
+    <select class="form-select" id="destination">
+
+        <option value="">Choose</option>
+        <option value="0"> North Avenue</option>
+        <option value="0"> Quezon Avenue</option>
+        <option value="0"> GMA Kamuning</option>
+        <option value="3"> Araneta Center - Cubao</option>
+        <option value="3"> Santolan-Anapolis</option>
+        <option value="7"> Ortigas</option>
+        <option value="7"> Shaw Boulevard</option>
+        <option value="7"> Boni Avenue</option>
+        <option value="11"> Guadalupe</option>
+        <option value="11"> Buendia</option>
+        <option value="11"> Ayala</option>
+        <option value="15"> Magallanes</option>
+        <option value="15"> Taft Avenue</option>
+</div>
+</select>
+<details ontoggle="message()">
+<summary>Discounts</summary>
+
+<label>Select a Discount(If Applicable)</label><br><br>
+    <select class="form-select" id="discount">
+<option value="">Choose</option>
+<option value="0.2"> PWD(20%)</option>
+<option value="0.2">Student(20%)</option>
+<option value="0.2">Senior Citizen(20%)</option>
+</select>
+</form>
+</details>
+<center><button type="Button"class="btn btn-primary" onclick="showValue()">Show Price</button></center>
+</div>
+
+
+<script>
+function showValue(){
+var $startingMe = document.getElementById("starting").value;
+var _destinationMe = document.getElementById("destination").value;
+var price2 = Number($startingMe) + Number(_destinationMe);
+var disc = Number(price2) * document.getElementById("discount").value;
+var answer = Number(price2) - Number(disc);
+document.getElementById("price").innerHTML = answer;
+}
+</script>
 
 <nav class="navbar navbar-expand-md bg-light navbar-dark fixed-top">
 <div class="navdiv container-fluid collapse navbar-collapse">
@@ -97,8 +168,9 @@ border: 3px solid black;
         </ul>
         <form class="d-flex">
             <input class="form-control" type="text" style="background-color: lightgray; width: 350px; height: 80px;" placeholder="Search...">
-          <button class="btn btn-danger" type="button" style="height: 80px; width: 75px; ">Search</button>
+          <button class="btn btn-success" type="button" style="height: 80px; width: 75px; ">Search</button>
         </form>
 </div>
 </body>
 </html>
+
